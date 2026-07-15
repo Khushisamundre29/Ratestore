@@ -15,7 +15,16 @@ export default function AdminUserDetail() {
   }, [id]);
 
   if (error) return <div className="page-container"><p className="error-text">{error}</p></div>;
-  if (!user) return <div className="page-container"><p>Loading...</p></div>;
+  if (!user) {
+    return (
+      <div className="page-container">
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading user details...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page-container">

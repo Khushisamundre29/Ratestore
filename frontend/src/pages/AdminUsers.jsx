@@ -23,7 +23,7 @@ export default function AdminUsers() {
 
   useEffect(() => {
     fetchUsers();
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy, order]);
 
   const handleFilterChange = (e) => {
@@ -65,7 +65,12 @@ export default function AdminUsers() {
       </form>
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading users...
+        </div>
+      ) : users.length === 0 ? (
+        <div className="empty-state">No users found.</div>
       ) : (
         <table className="data-table">
           <thead>

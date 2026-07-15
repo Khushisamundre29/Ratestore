@@ -23,7 +23,7 @@ export default function AdminStores() {
 
   useEffect(() => {
     fetchStores();
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy, order]);
 
   const handleFilterChange = (e) => {
@@ -59,7 +59,12 @@ export default function AdminStores() {
       </form>
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading stores...
+        </div>
+      ) : stores.length === 0 ? (
+        <div className="empty-state">No stores found.</div>
       ) : (
         <table className="data-table">
           <thead>

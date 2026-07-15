@@ -13,7 +13,10 @@ export default function AdminDashboard() {
       <h2>Admin Dashboard</h2>
 
       {!stats ? (
-        <p>Loading...</p>
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading dashboard...
+        </div>
       ) : (
         <div className="stats-row">
           <div className="stat-card">

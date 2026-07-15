@@ -65,9 +65,12 @@ export default function UserStores() {
       {message && <p className="success-text">{message}</p>}
 
       {loading ? (
-        <p>Loading stores...</p>
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading stores...
+        </div>
       ) : stores.length === 0 ? (
-        <p>No stores found.</p>
+        <div className="empty-state">No stores found. Try a different search.</div>
       ) : (
         <div className="store-grid">
           {stores.map((store) => (

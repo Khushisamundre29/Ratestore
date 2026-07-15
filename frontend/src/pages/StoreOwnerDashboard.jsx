@@ -14,7 +14,16 @@ export default function StoreOwnerDashboard() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="page-container"><p>Loading...</p></div>;
+  if (loading) {
+    return (
+      <div className="page-container">
+        <div className="loading-state">
+          <span className="spinner"></span>
+          Loading your dashboard...
+        </div>
+      </div>
+    );
+  }
   if (error) return <div className="page-container"><p className="error-text">{error}</p></div>;
 
   return (
@@ -35,7 +44,7 @@ export default function StoreOwnerDashboard() {
 
       <h3>Ratings Received</h3>
       {data.raters.length === 0 ? (
-        <p>No ratings submitted yet.</p>
+        <div className="empty-state">No ratings submitted yet.</div>
       ) : (
         <table className="data-table">
           <thead>
