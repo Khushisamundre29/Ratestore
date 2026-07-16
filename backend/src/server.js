@@ -1,6 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const dns = require('dns');
 require('dotenv').config();
+
+// node prefers ipv6 by default since v18, which causes connect ETIMEDOUT
+// on networks that don't route ipv6 properly, forcing ipv4 fixes it
+dns.setDefaultResultOrder('ipv4first');
 
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
